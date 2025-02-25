@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Übersicht über verschiedene Typen von Elektromotoren, inklusive Gleichstrommotoren, Wechselstrommotoren, Synchronmotoren und Reluktanzmotoren.">
+    <title>Elektromotoren | Übersicht</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js" defer></script>
+</head>
+<body>
+    <div id="particles-js"></div>
+
+    <div id="transition-overlay"></div>
+
+    <header>
+        <h1>Elektromotoren-Typen</h1>
+    </header>
+
+    <main>
+        <div class="grid">
+            <a href="dc.html" class="card" data-motor-type="dc">
+                <img src="images/dc-motor.png" alt="Gleichstrommotor" loading="lazy" width="200" height="150">
+                <h3>Gleichstrommotor</h3>
+            </a>
+
+            <a href="bldc.html" class="card" data-motor-type="ac">
+                <img src="images/bldc-motor.png" alt="Bürstenloser Gleichstrommotor" loading="lazy" width="200" height="150">
+                <h3>Bürstenloser Gleichstrommotor</h3>
+            </a>
+
+            <a href="ac.html" class="card" data-motor-type="ac">
+                <img src="images/ac-motor.png" alt="Wechselstrommotor" loading="lazy" width="200" height="150">
+                <h3>Wechselstrommotor</h3>
+            </a>
+
+            <a href="reluktanz.html" class="card" data-motor-type="reluctance">
+                <img src="images/reluctance-motor.png" alt="Reluktanzmotor" loading="lazy" width="200" height="150">
+                <h3>Reluktanzmotor</h3>
+            </a>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+        //Fügt Event Listener für alle Karten hinzu
+        document.querySelectorAll('.card').forEach(card => {
+          card.addEventListener('click', (e) => {
+            e.preventDefault(); // Standardverhalten verhindern
+            const link = card.getAttribute('href');
+            const overlay = document.querySelector('#transition-overlay');
+
+            // Starte die Ausblendanimation (CSS-Klasse)
+            overlay.classList.add('fade-out');
+
+            //Verzögerte Weiterleitung.
+            setTimeout(() => {
+              window.location.href = link;
+            }, 500); //Wartezeit = CSS-Transitionsdauer
+          });
+        });
+
+        // Initialisiere Particles.js, wenn das Element vorhanden ist.
+        if (document.getElementById('particles-js')) {
+            particlesJS.load('particles-js', 'particles-config.json', function() {
+              console.log('callback - particles.js config loaded');
+            });
+        }
+    </script>
+</body>
+</html>

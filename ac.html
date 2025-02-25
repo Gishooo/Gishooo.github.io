@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Umfassende Informationen zum Wechselstrommotor (AC-Motor) für das Physik-Abitur (Leistungsfach). Asynchronmotor, Synchronmotor, Formeln, Anwendungen, Vor- und Nachteile.">
+    <title>Wechselstrommotor (AC-Motor) | Physik LK</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="particles-js"></div>
+    <div id="transition-overlay"></div>
+
+    <header>
+        <h1>Wechselstrommotor (AC-Motor)</h1>
+    </header>
+
+    <main class="content">
+
+        <section class="section">
+            <h2 class="section-title">⚡️ Grundlagen und Arten</h2>
+            <p>
+                Wechselstrommotoren sind Elektromotoren, die mit Wechselstrom betrieben werden. Es gibt zwei Haupttypen von AC-Motoren:
+            </p>
+            <ul class="key-points">
+                <li><strong>Asynchronmotor</strong></li>
+                <li><strong>Synchronmotor</strong></li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">⚙️ Asynchronmotor</h2>
+            <h3 class="subheading">Aufbau</h3>
+            <p>
+               Hauptkomponenten::
+            </p>
+            <ul class="key-points">
+               <li><strong>Stator:</strong>  Erzeugt durch eine Drehphasenwicklung ein rotierendes Magnetfeld (Drehfeld)</li>
+               <div class="diagram-container">
+                <img src="images/Vierpolig-3stränge.svg" alt="Aufbau eines Asynchronmotors" class="diagram" style="background-color: white;">
+            </div>
+               <li><strong>Rotor:</strong>
+                 <ul>
+                <li><strong>Käfigläufer (Kurzschlussläufer):</strong> Besteht aus leitenden Stäben, die an den Enden durch Ringe kurzgeschlossen sind. Ist vom Stator umgeben.
+                    <div class="diagram-container">
+                        <img src="images/Squirrel_cage.jpg" alt="Käfigläufer (Kurzschlussläufer)" class="diagram" style="background-color: white;">
+                    </div>
+                </li>
+                 </ul>
+               </li>
+            </ul>
+
+            <h3 class="subheading">Funktionsweise</h3>
+             <p>
+                Funktion:
+             </p>
+             <ol>
+                <li>Die drei Phasen (U, V, W) in der Statorwicklung erzeugen ein rotierendes Magnetfeld</li>
+                <li>Dieses Drehfeld induziert eine Spannung in den Leitern des Rotors (Käfigläufer)</li>
+                <li>Der durch die Induktion fließende Strom erzeugt ein eigenes Magnetfeld im Rotor</li>
+                <li>Die Wechselwirkung zwischen dem Stator-Drehfeld und dem Rotor-Magnetfeld erzeugt ein Drehmoment</li>
+                <li>Der Rotor beginnt, sich zu drehen, um dem Drehfeld zu folgen</li>
+                <li> Der Rotor dreht sich immer etwas langsamer als das Stator-Drehfeld. Dieser Unterschied (Schlupf) ist notwendig, da sonst keine Spannung induziert und somit kein Drehmoment erzeugt würde</li>
+             </ol>
+
+             <div class="diagram-container">
+                 <img src="images/asynchronmotor-funktion.gif" alt="Funktionsweise eines Asynchronmotors (Animation)" class="diagram">
+             </div>
+
+             <h2 class="section-title">📝 Formeln</h2>
+
+            <div class="formula">
+                \[ n_s = \frac{f}{p} \]
+                 <span class="formula-definition">Synchrondrehzahl</span>
+            </div>
+            <ul>
+                <li>\(n_s\): Synchrondrehzahl (Drehzahl des Drehfeldes, in U/s oder Hz)</li>
+                <li>\(f\): Netzfrequenz (in Hz)</li>
+                <li>\(p\): Polpaarzahl (Anzahl der Polpaare der Ständerwicklung)</li>
+            </ul>
+
+
+            <div class="formula">
+                \[ s = \frac{n_s - n}{n_s} \]
+                <span class="formula-definition">Schlupf</span>
+            </div>
+            <ul>
+              <li>\(s\): Schlupf (dimensionslos, oft in % angegeben)</li>
+              <li>\(n_s\): Synchrondrehzahl</li>
+              <li>\(n\): Tatsächliche Drehzahl des Rotors</li>
+            </ul>
+
+
+            <div class="formula">
+               \[M \sim s \] <span class="formula-definition"> Drehmoment ist proportional zum Schlupf, für kleinen Schlupf</span>
+            </div>
+            <ul>
+              <li>\(M\): Drehmoment</li>
+              <li>\(s\): Schlupf</li>
+            </ul>
+
+            <h3 class="subheading">Kippmoment</h3>
+             <p>
+                Das Kippmoment ist das maximale Drehmoment, das ein Asynchronmotor erzeugen kann. Übersteigt die Last dieses Moment, kann der Motor die Drehzahl nicht mehr halten und bleibt abrupt stehen. Er "kippt".
+             </p>
+
+            <h3 class="subheading">Anwendungen (Asynchronmotor)</h3>
+            <ul class="key-points">
+                <li>Industrielle Antriebe (Pumpen, Lüfter, Förderbänder, Werkzeugmaschinen)</li>
+                <li>Haushaltsgeräte (Waschmaschinen, Kühlschränke, Ventilatoren).</li>
+                <li>Elektrowerkzeuge.</li>
+                <li>Elektromobilität</li>
+            </ul>
+
+            <h3 class="subheading">Vor- und Nachteile (Asynchronmotor)</h3>
+             <div class="pros-cons-container">
+               <div class="pros">
+                    <h3>Vorteile</h3>
+                    <ul>
+                        <li>Einfacher und robuster Aufbau</li>
+                        <li>Wartungsarm (keine Bürsten, kein Kommutator)</li>
+                        <li>Kostengünstig</li>
+                        <li>Hoher Wirkungsgrad</li>
+                        <li>Selbstanlaufend</li>
+                    </ul>
+                </div>
+                <div class="cons">
+                    <h3>Nachteile</h3>
+                    <ul>
+                        <li>Drehzahländerung nur durch Frequenzumrichter oder Polumschaltung</li>
+                        <li>Hoher Anlaufstrom</li>
+                        <li>Schlechter Leistungsfaktor bei Teillast</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">⚙️ Synchronmotor</h2>
+            <h3 class="subheading">Aufbau</h3>
+           <p>
+                Der Synchronmotor ähnelt dem Asynchronmotor, hat aber einen entscheidenden Unterschied im Rotor:
+           </p>
+            <ul class="key-points">
+               <li><strong>Ständer (Stator):</strong> Erzeugt ebenfalls ein Drehfeld</li>
+               <li><strong>Läufer (Rotor):</strong>
+                 <ul>
+                    <li>z.B. <strong>Permanentmagnet-Rotor:</strong> Enthält Permanentmagnete</li>
+                 </ul>
+               </li>
+            </ul>
+
+            <div class="diagram-container">
+                <img src="images/unnamed.gif" alt="Aufbau eines Synchronmotors" class="diagram">
+            </div>
+
+            <h3 class="subheading">Funktionsweise</h3>
+            <p>
+               So funktioniert der Synchronmotor:
+            </p>
+             <ol>
+                <li>Der Drehstrom erzeugt ein rotierendes Magnetfeld im Stator</li>
+                <li>Der Rotor erzeugt mit den Permanentmagneten ebenfalls ein Magnetfeld</li>
+                <li>Das Magnetfeld des Rotors "rastet" in das rotierende Magnetfeld des Stators ein</li>
+                <li>Der Rotor dreht sich mit der gleichen Geschwindigkeit wie das drehfeld des Stators -> Synchron</li>
+                <li>Bei Belastung verschiebt sich der Rotorwinkel relativ zum Statorfeld, bei Überlastung bleibt er stehen</li>
+             </ol>
+
+             <h2 class="section-title">📝 Formeln</h2>
+            <div class="formula">
+                \[ n_s = \frac{f}{p} \]
+                <span class="formula-definition">Synchrondrehzahl</span>
+              </div>
+              <ul>
+                <li>\(n_s\): Drehzahl (U/min)</li>
+                <li>\(f\): Netzfrequenz (Hz)</li>
+                <li>\(p\): Polpaarzahl</li>
+              </ul>
+            </ul>
+
+            <div class="formula">
+               \[M \sim \sin(\delta)\] <span class="formula-definition"> Drehmoment ist abhängig vom Lastwinkel/Polradwinkel</span>
+            </div>
+            <ul>
+              <li>\(M\): Drehmoment</li>
+              <li>\(\delta\): Lastwinkel / Polradwinkel (der Winkel zwischen dem rotierenden Magnetfeld des Stators und dem Magnetfeld des Rotors unter Last)</li>
+
+            </ul>
+
+            <h3 class="subheading">Anwendungen (Synchronmotor)</h3>
+             <ul class="key-points">
+                <li>Präzise Drehzahlsteuerung (z.B. in Uhren, Positionierantrieben)</li>
+                <li>In Kraftwerken als Generatoren, in Pumpen, in Walzwerken</li>
+                <li>Anwendungen, bei denen ein konstanter Leistungsfaktor wichtig ist</li>
+             </ul>
+
+            <h3 class="subheading">Vor- und Nachteile (Synchronmotor)</h3>
+            <div class="pros-cons-container">
+              <div class="pros">
+                <h3>Vorteile</h3>
+                <ul>
+                    <li>Konstante Drehzahl, unabhängig von der Last</li>
+                    <li>Hoher Wirkungsgrad, auch bei Teillast</li>
+                    <li>Hohe Leistungsdichte</li>
+                </ul>
+              </div>
+              <div class="cons">
+                <h3>Nachteile</h3>
+                <ul>
+                    <li>Nicht selbstanlaufend und benötigt Anlaufhilfe</li>
+                    <li>Komplexerer Aufbau als Asynchronmotoren</li>
+                    <li>Höhere Kosten als Asynchronmotoren</li>
+                    <li>Fällt bei Überlastung aus</li>
+                </ul>
+              </div>
+            </div>
+        </section>
+
+        <div class="navigation">
+            <a href="index.html" class="back-button">Zurück zur Übersicht</a>
+        </div>
+
+    </main>
+
+      <div id="myModal" class="modal">
+      <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <img id="modal-image" src="" alt="Vergrößertes Bild" style="width: 100%;">
+      </div>
+    </div>
+
+    <script>
+      //Funktion zum öffnen des Modals
+      function openModal(imgSrc){
+        const modal = document.getElementById("myModal");
+        const modalImg = document.getElementById("modal-image");
+        modal.style.display = "block";
+        modalImg.src = imgSrc;
+      }
+
+      //Event Listener für den Schließen-Button
+      const closeButton = document.querySelector(".close-button");
+      closeButton.addEventListener('click', () => {
+        document.getElementById("myModal").style.display = "none";
+      });
+
+      //Schließen des Modals bei Klick außerhalb des Bildes
+      window.addEventListener('click', (event) => {
+          const modal = document.getElementById('myModal');
+          if(event.target == modal){
+            modal.style.display = 'none';
+          }
+      });
+
+        // Initialisiere Particles.js (wenn vorhanden)
+        if (document.getElementById('particles-js')) {
+            particlesJS.load('particles-js', 'particles-config.json', function() {
+                console.log('callback - particles.js config loaded');
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Informationen zum bürstenlosen Gleichstrommotor (BLDC) für das Physik-Abitur (Leistungsfach). Aufbau, Funktionsweise, Kommutierung, Anwendungen, Vor- und Nachteile.">
+    <title>BLDC Motor | Physik LK</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="particles-js"></div>
+    <div id="transition-overlay"></div>
+
+    <header>
+        <h1>Bürstenloser Gleichstrommotor (BLDC)</h1>
+    </header>
+
+    <main class="content">
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🧲</span> Grundlagen</h2>
+            <p>
+                Der bürstenlose Gleichstrommotor (BLDC) ist ein Elektromotor, der elektronisch kommutiert wird. Er benötigt keine Bürsten, was Verschleiß reduziert und die Lebensdauer erhöht.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">⚙️</span> Aufbau und Funktion <span class="icon">💡</span></h2>
+
+            <div class="diagram-container">
+                <img src="images/Leistungsstufe.png" alt="Aufbau eines BLDC-Motors" class="diagram">
+            </div>
+
+            <p>
+                Der obige BLDC-Motor besteht aus einem Rotor mit Permanentmagneten und einem Stator mit drei Wicklungen (U, V, W). Die Leistungsstufe schaltet mithilfe von Transistoren den Strom durch die Statorwicklungen. Der Treiber steuert die Transistoren der Leistungsstufe basierend auf Eingangssignalen (a, b, c) und erzeugt so ein rotierendes Magnetfeld im Stator. Dieses Feld wechselwirkt mit dem Rotor-Magnetfeld und erzeugt ein Drehmoment, wodurch sich der Rotor dreht. Die elektronische Kommutierung ersetzt die Bürsten eines herkömmlichen Gleichstrommotors.
+            </p>
+            <div class="diagram-container">
+                <img src="images/bldc-aufbau.gif" alt="Elektronische Kommutierung eines BLDC-Motors" class="diagram" style="background-color: white;">
+            </div>
+        </section>
+
+        
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🔌</span> Anwendungen</h2>
+            <p>
+              Festplattenlaufwerke, Lüfter (Computer), Modellbau, Elektrowerkzeuge, Elektrofahrzeuge (E-Bikes, E-Scooter), Drohnen, Industrielle Antriebe (Pumpen, Kompressoren), Robotik und Haushaltsgeräte.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">⚖️</span> Vor- und Nachteile</h2>
+            <div class="pros-cons-container">
+                <div class="pros">
+                    <h3>Vorteile</h3>
+                    <ul>
+                        <li>Hoher Wirkungsgrad</li>
+                        <li>Geringer Verschleiß (keine Bürsten)</li>
+                        <li>Hohe Drehzahl und Leistungsdichte</li>
+                        <li>Gute Regelbarkeit</li>
+                        <li>Geringe Geräuschentwicklung</li>
+                        <li>Lange Lebensdauer</li>
+                    </ul>
+                </div>
+                <div class="cons">
+                    <h3>Nachteile</h3>
+                    <ul>
+                        <li>Komplexere Elektronik</li>
+                        <li>Höhere Kosten</li></li>
+                        <li>Nicht immer für sehr hohe Drehmomente bei niedrigen Drehzahlen geeignet</li>
+
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="navigation">
+            <a href="index.html" class="back-button">Zurück zur Übersicht</a>
+        </div>
+
+    </main>
+
+    <script>
+        // Initialisiere Particles.js (wenn vorhanden)
+        if (document.getElementById('particles-js')) {
+            particlesJS.load('particles-js', 'particles-config.json', function() {
+                console.log('callback - particles.js config loaded');
+            });
+        }
+    </script>
+</body>
+</html>

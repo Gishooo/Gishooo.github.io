@@ -1,0 +1,486 @@
+/* --- Globale Einstellungen und Hilfsklassen --- */
+
+*, *::before, *::after { /* Universeller Selektor für bessere Konsistenz */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    color: #ffffff;
+    background-color: #0d0d0d; /* Etwas dunkleres Grau für besseren Kontrast */
+    /* overflow: hidden;  Entfernt, da es Scrollen auf Inhaltsseiten verhindert */
+    position: relative; /* Für absolute Positionierung von Kindern */
+    line-height: 1.6; /* Verbesserte Lesbarkeit */
+}
+
+/* Hilfsklasse für Textschatten */
+.text-shadow {
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* --- Hintergrund (Partikel, optional Blitze) --- */
+
+#particles-js {  /* Particles.js direkt ansprechen, weniger spezifisch */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Hinter allem anderen */
+}
+
+/* Canvas für Blitzanimation (optional) */
+#lightning-canvas, #clouds-canvas {
+    position: absolute; /* Bleibt absolut positioniert innerhalb des relativen body */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  /* display: block;  Nicht notwendig, wenn Canvas im HTML korrekt dimensioniert ist */
+}
+
+/* --- Header --- */
+
+header {
+    text-align: center;
+    padding: 2rem 1rem; /* Einheitliche Paddings */
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px); /* Stärkerer Blur-Effekt */
+    -webkit-backdrop-filter: blur(10px); /* Für Safari */
+    position: relative; /* Für den Mute-Button */
+    z-index: 100; /* Über dem Partikel-Hintergrund */
+    border-bottom: 1px solid rgba(255, 235, 59, 0.3); /* Subtile Trennlinie */
+}
+
+header h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #ffeb3b;
+    text-shadow: 0 0 20px rgba(255, 235, 59, 0.7);
+    margin-bottom: 0.5rem;
+}
+
+/* --- Mute-Button --- */
+
+#mute-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(255, 235, 59, 0.2); /* Angepasst an Hover */
+    border: 1px solid rgba(255, 235, 59, 0.5); /* Konsistenter Rahmen */
+    color: #ffeb3b;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease; /* Sanftere Übergänge */
+    z-index: 101; /* Über dem Header-Inhalt, aber unter Overlay */
+    outline: none; /* Entfernt den Fokus-Rahmen */
+}
+
+#mute-btn:hover {
+    background: rgba(255, 235, 59, 0.4); /* Etwas heller beim Hover */
+    transform: scale(1.05); /* Leichte Vergrößerung */
+}
+#mute-btn:active{
+    transform: scale(0.95);
+}
+
+/* --- Einführungstext (optional) --- */
+/* Intro-Sektion entfernt und Funktionalität in den Header integriert. */
+
+/* --- Hauptinhalt (Grid-Layout) --- */
+
+main {
+    padding: 2rem 1rem; /* Mehr Padding oben */
+    max-width: 1400px; /* Größere maximale Breite */
+    margin: 0 auto;     /* Zentriert den Inhalt */
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Verbesserte Responsivität */
+    gap: 2rem;
+}
+
+
+/* --- Karten-Styling --- */
+
+.card {
+    background: rgba(255, 255, 255, 0.1); /* Geändert: Weiß mit geringer Opazität */
+    border: 1px solid rgba(255, 235, 59, 0.3); /* Subtilerer Rahmen */
+    border-radius: 15px;
+    padding: 1.5rem;
+    text-align: center;
+    color: #fff;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease; /* Mehr Übergänge */
+    position: relative;
+    overflow: hidden; /* Verhindert, dass Inhalte über den Rand hinausragen */
+    text-decoration: none; /* Entfernt Unterstreichung von Links */
+    display: block;      /* Macht die Karte zum Block-Element */
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(255, 235, 59, 0.3); /* Angepasster Schatten */
+    background-color: rgba(255, 255, 255, 0.15);  /* Etwas heller beim Hover */
+}
+
+.card img {
+    width: 150px; /* Etwas größer */
+    height: 150px;
+    object-fit: contain;
+    margin-bottom: 1rem;
+    filter: drop-shadow(0 0 10px rgba(255, 235, 59, 0.5)); /* Reduzierter Schatten */
+    transition: transform 0.3s ease;
+    border-radius: 10px; /* Optional: Abgerundete Ecken */
+}
+
+.card:hover img {
+    transform: scale(1.1); /* Stärkere Vergrößerung */
+}
+
+.card h3 {
+    font-size: 1.8rem; /* Größerer Titel */
+    margin-bottom: 0.75rem; /* Mehr Abstand */
+    color: #ffeb3b;
+    text-shadow: 0 0 10px rgba(255, 235, 59, 0.7);
+}
+
+
+/* --- Inhaltsseiten-spezifische Styles --- */
+.content {
+    max-width: 900px; /*Größer*/
+    margin: 2rem auto;  /*Abstand von oben*/
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.5); /*Schatten für Tiefe*/
+}
+
+.content h2 {
+    font-size: 2.2rem;
+    margin-bottom: 1.2rem;
+    color: #ffeb3b;
+    text-shadow: 0 0 10px rgba(255, 235, 59, 0.7);
+}
+
+.content p, .content ul {
+    font-size: 1.1rem;
+    line-height: 1.7; /*Mehr Zeilenabstand*/
+    color: #e0e0e0;
+    margin-bottom: 1.5rem;
+}
+
+.content ul {
+    list-style-type: disc;
+     padding-left: 1.5rem; /*Einrücken*/
+}
+
+.content li {
+    margin-bottom: 0.6rem; /*Abstand zwischen Listenelementen*/
+}
+/* Diagramme und Bilder */
+.diagram {
+    text-align: center;
+    margin-bottom: 2rem; /* Mehr Abstand */
+}
+
+.diagram img {
+    max-width: 100%;
+    height: auto;
+    border: 2px solid #ffeb3b; /* Stärkerer Rahmen */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.5); /* Schatten */
+}
+
+.caption {
+     font-size: 1rem; /* Größer */
+     color: #ccc; /* Etwas heller */
+     margin-top: 0.75rem; /* Mehr Abstand */
+     font-style: italic; /* Kursiv */
+}
+
+/* Navigationsbereich */
+.navigation {
+    text-align: center;
+    margin-top: 3rem;  /*Mehr Abstand*/
+}
+
+.back-button {
+    display: inline-block; /* Wichtig für Padding/Margin */
+    padding: 10px 20px;
+    background-color: rgba(255, 235, 59, 0.2);
+    color: #ffeb3b;
+    border: 1px solid rgba(255, 235, 59, 0.5);
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    cursor: pointer;
+}
+.back-button:hover{
+    background-color: rgba(255, 235, 59, 0.4);
+    transform: scale(1.05);
+}
+.back-button:active{ /*Visuelles Feedback beim Klicken*/
+    transform: scale(0.95);
+}
+
+/* --- Übergangs-Overlay --- */
+
+#transition-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #0d0d0d; /* Gleiche Farbe wie body-Hintergrund */
+    z-index: 1000; /* Über allem anderen */
+    pointer-events: none; /* Anfangs keine Interaktion */
+    opacity: 0; /* Anfangs unsichtbar */
+    transition: opacity 0.5s ease; /* Sanfter Übergang */
+}
+
+#transition-overlay.fade-out { /* Klasse für Ausblendanimation */
+    opacity: 1;
+    pointer-events: auto; /* Erlaube Interaktion während des Übergangs */
+}
+
+/* --- Responsives Design (Media Queries) --- */
+
+/* Mittlere Bildschirme (Tablets) */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2.5rem; /* Etwas kleiner */
+    }
+
+    .grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Kleinere Karten */
+    }
+  .card img{
+    width: 100%; /*Volle Breite auf kleinen Bildschirmen*/
+    height: auto; /*Seitenverhältnis beibehalten*/
+  }
+}
+
+/* Kleine Bildschirme (Mobilgeräte) */
+@media (max-width: 480px) {
+     header h1 {
+        font-size: 2rem; /* Noch kleiner */
+    }
+    .grid{
+      grid-template-columns: 1fr; /*Eine Spalte*/
+    }
+
+    .content{
+      padding: 1rem; /*Weniger Padding*/
+    }
+
+    .diagram img{
+      border-radius: 0;
+    }
+}
+
+/* Karten-Selektionsstil */
+.card.selected {
+    border-color: #ffeb3b;
+    background-color: rgba(255, 235, 59, 0.1); /*Hintergrund für Auswahl*/
+    box-shadow: 0 0 15px rgba(255, 235, 59, 0.5); /*Auswahlschatten*/
+}
+
+.section {
+    margin-bottom: 2.5rem; /* Mehr Abstand zwischen Abschnitten */
+}
+
+.section-title {
+    font-size: 1.8rem;
+    color: #ffeb3b;
+    border-bottom: 2px solid rgba(255, 235, 59, 0.5);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    display: flex; /* Für Icon */
+    align-items: center;
+}
+
+.section-title .icon {
+    margin-right: 0.5rem;
+    font-size: 1.2em; /* Größeres Icon */
+    color: rgba(255, 235, 59, 0.8);
+}
+
+.formula {
+    display: block; /* Block-Element für bessere Formatierung */
+    margin: 1rem 0;
+    padding: 1rem;
+    background-color: rgba(255, 255, 255, 0.05); /* Dezenter Hintergrund */
+    border-left: 4px solid #ffeb3b; /* Akzentleiste */
+    border-radius: 4px;
+    font-size: 1.1rem;
+}
+
+.key-points {
+    list-style: none; /* Keine Standard-Aufzählungszeichen */
+    padding: 0;
+}
+
+.key-points li {
+    margin-bottom: 0.75rem;
+    padding-left: 1.5rem;
+    position: relative; /* Für das eigene Aufzählungszeichen */
+}
+
+.key-points li::before {
+    content: '•'; /* Eigenes Aufzählungszeichen */
+    position: absolute;
+    left: 0;
+    color: #ffeb3b;
+    font-size: 1.2rem;
+    line-height: 1; /* Zentriert das Zeichen */
+}
+
+.diagram-container {
+    text-align: center; /* Zentriert das Diagramm */
+    margin-bottom: 1.5rem;
+    position: relative; /*Für absolute Postitionierung des Buttons*/
+}
+
+.diagram {
+    max-width: 100%;
+    height: auto;
+    border: 2px solid #ffeb3b;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    display: inline-block; /* Wichtig für Zentrierung */
+    vertical-align: middle; /*hilft bei der Zentrierung*/
+}
+
+.pros-cons-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.pros, .cons {
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+.pros {
+    border: 2px solid #4CAF50; /* Grün für Vorteile */
+    background-color: rgba(76, 175, 80, 0.1);
+}
+
+.cons {
+    border: 2px solid #F44336; /* Rot für Nachteile */
+    background-color: rgba(244, 67, 54, 0.1);
+}
+
+.pros ul, .cons ul {
+    list-style: none;
+    padding: 0;
+}
+
+.pros li::before, .cons li::before {
+    content: '•';
+    margin-right: 0.5em;
+    color: #ffeb3b; /*oder eine andere Akzentfarbe*/
+}
+
+.pros h3, .cons h3 {
+    color: #ffeb3b;
+    margin-bottom: 0.5rem;
+    text-align: center;
+    font-size: 1.4rem;
+}
+
+.interactive-button {
+    position: absolute;
+    bottom: 10px; /* Abstand vom unteren Rand */
+    right: 10px;  /* Abstand vom rechten Rand */
+    padding: 8px 12px;
+    background-color: rgba(255, 235, 59, 0.8);
+    color: #000;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s, transform 0.2s;
+    z-index: 10; /*Stellt sicher, dass es über dem Bild liegt.*/
+}
+
+.interactive-button:hover {
+    background-color: #ffeb3b;
+    transform: scale(1.05);
+}
+
+.interactive-button:active {
+    transform: scale(0.95);
+}
+
+/*Stil für das Modal*/
+.modal {
+    display: none; /* Standardmäßig ausgeblendet */
+    position: fixed;
+    z-index: 1000; /* Über allem */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Scrollen, falls benötigt */
+    background-color: rgba(0,0,0,0.8);
+}
+
+.modal-content {
+    background-color: #0d0d0d;
+    margin: 5% auto; /*Zentriert, mit Abstand von oben*/
+    padding: 20px;
+    border: 2px solid #ffeb3b;
+    border-radius: 15px;
+    width: 80%; /*oder eine andere Größe*/
+    max-width: 800px; /*Maximale Größe*/
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0,0,0, 0.5);
+}
+
+.close-button {
+    color: #ffeb3b;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-button:hover, .close-button:focus {
+    color: #ffc107;
+    text-decoration: none;
+}
+
+/* Stil für Anwendungsbereiche (Beispiel) */
+.application-box {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 235, 59, 0.3);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.application-box h4 {
+    color: #ffeb3b;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.subheading {
+    font-size: 1.4rem;
+    color: #ffc107; /*Andere Akzentfarbe*/
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(255, 193, 7, 0.5);
+    padding-bottom: 0.25rem;
+}

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Informationen zum Synchronmotor für das Physik-Abitur (Leistungsfach). Aufbau, Funktionsweise, Erregung, Anlauf, Anwendungen, Vor- und Nachteile.">
+  <title>Synchronmotor | Physik LK</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="particles-js"></div>
+  <div id="transition-overlay"></div>
+
+  <header>
+    <h1>Synchronmotor</h1>
+  </header>
+
+  <main class="content">
+
+    <section class="section">
+      <h2 class="section-title"><span class="icon">🔄</span> Grundlagen</h2>
+      <p>Der Synchronmotor ist ein Wechselstrommotor, dessen Rotor sich synchron mit dem Drehfeld des Stators dreht. Es gibt keinen Schlupf. Spezielle Rotorkonstruktionen erzeugen ein eigenes Magnetfeld oder haben eine ausgeprägte Polform.
+      </p>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title"><span class="icon">⚙️</span> Aufbau</h2>
+
+      <div class="diagram-container">
+        <img src="images/synchronmotor-aufbau.png" alt="Aufbau eines Synchronmotors" class="diagram">
+      </div>
+      <p>Ein Synchronmotor besteht aus Stator und Rotor. Der Stator enthält eine dreiphasige Wicklung, die ein Drehfeld erzeugt. Der Rotor kann Permanentmagnete, Elektromagnete oder eine Reluktanz-Erregung haben.
+      </p>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title"><span class="icon">🚀</span> Anlauf</h2>
+      <p>Synchronmotoren sind nicht selbstanlaufend. Der Rotor kann im Stillstand kein Drehmoment entwickeln.
+      </p>
+      <p>Anlaufmethoden:</p>
+      <ul class="anlauf-methods">
+        <li>Frequenzanlauf: Die Frequenz des Drehstroms wird langsam erhöht. Der Rotor folgt dem langsam rotierenden Feld und beschleunigt synchron.</li>
+        <li>Anlauf mit Hilfsmotor: Ein Hilfsmotor bringt den Rotor auf synchrone Drehzahl. Dann wird der Synchronmotor ans Netz geschaltet.</li>
+        <li>Asynchroner Anlauf: Der Rotor enthält eine Käfigwicklung. Der Motor läuft asynchron an und synchronisiert sich dann selbst.</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title"><span class="icon">💡</span> Funktionsweise</h2>
+
+      <div class="diagram-container">
+        <img src="images/synchronmotor-funktion.gif" alt="Funktionsweise eines Synchronmotors" class="diagram">
+      </div>
+
+      <p>Die Ständerwicklung erzeugt ein Drehfeld. Der Rotor wird mitgezogen. Bei Belastung entsteht ein Winkel zwischen Rotorfeld und Drehfeld. Das Drehmoment ist abhängig vom Winkel. Bei Überlastung fällt der Motor außer Tritt.
+      </p>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title"><span class="icon">⚖️</span> Vor- und Nachteile</h2>
+      <div class="pros-cons-container">
+        <div class="pros">
+          <h3>Vorteile</h3>
+          <ul>
+            <li>Konstante Drehzahl.</li>
+            <li>Hoher Wirkungsgrad.</li>
+            <li>Kann zur Blindleistungskompensation verwendet werden.</li>
+          </ul>
+        </div>
+        <div class="cons">
+          <h3>Nachteile</h3>
+          <ul>
+            <li>Nicht selbstanlaufend.</li>
+            <li>Komplexerer Aufbau.</li>
+            <li>Kann bei Überlastung ausfallen.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <div class="navigation">
+      <a href="index.html" class="back-button">Zurück zur Übersicht</a>
+    </div>
+
+  </main>
+
+  <script>
+    // Initialisiere Particles.js (wenn vorhanden)
+    if (document.getElementById('particles-js')) {
+      particlesJS.load('particles-js', 'particles-config.json', function() {
+        console.log('callback - particles.js config loaded');
+      });
+    }
+  </script>
+</body>
+</html>

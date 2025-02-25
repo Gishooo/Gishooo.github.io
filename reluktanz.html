@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Informationen zum Reluktanzmotor für das Physik-Abitur (Leistungsfach). Aufbau, Funktionsweise (geschaltet und synchron), Anwendungen, Vor- und Nachteile.">
+    <title>Reluktanzmotor | Physik LK</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="particles-js"></div>
+    <div id="transition-overlay"></div>
+
+    <header>
+        <h1>Reluktanzmotor</h1>
+    </header>
+
+    <main class="content">
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🧲</span> Grundlagen</h2>
+            <p>
+                Der Reluktanzmotor nutzt die Reluktanz, den magnetischen Widerstand. Materialien mit hoher Permeabilität leiten Magnetfelder gut (niedrige Reluktanz). Der Rotor richtet sich im Magnetfeld immer so aus, dass die Reluktanz minimal ist.
+            </p>
+            <p>
+                Es gibt zwei Hauptarten von Reluktanzmotoren:
+                <ul>
+                    <li>Geschalteter Reluktanzmotor (SRM)</li>
+                    <li>Synchroner Reluktanzmotor (SynRM)</li>
+                </ul>
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">⚙️</span> Aufbau</h2>
+        
+            <div class="diagram-container">
+                <img src="images/Reluktanzmotor.jpg" alt="Aufbau eines Reluktanzmotors" class="diagram" style="background-color: white;">
+                </div>
+        
+            <p>
+                Reluktanzmotoren bestehen grundsätzlich aus zwei Hauptkomponenten:
+                <ul>
+                    <li><strong>Stator:</strong> Der feststehende Teil des Motors. Er enthält Wicklungen, die, wenn sie bestromt werden, ein Magnetfeld erzeugen.</li>
+                    <li><strong>Rotor:</strong> Der drehende Teil. Er besteht aus ferromagnetischem Material und hat keine Permanentmagnete oder Wicklungen. Entscheidend ist die spezielle Formgebung des Rotors:
+                        <ul>
+                            <p></p>
+                            <li><strong>Geschalteter Reluktanzmotor (SRM):</strong> Der Rotor hat ausgeprägte Pole, die sich im Magnetfeld des Stators ausrichten.</li>
+                            <li><strong>Synchroner Reluktanzmotor (SynRM):</strong> Der Rotor ist so geformt, dass er eine Vorzugsrichtung für den magnetischen Fluss aufweist. Er hat oft Flussbarrieren im Inneren.</li>
+                        </ul>
+                    </li>
+                </ul>
+                Die Ansteuerung der Statorwicklungen erfolgt über eine externe Leistungselektronik
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">💡</span> Funktionsweise</h2>
+
+            <h3 class="subheading">Prinzip</h3>
+                <p>
+                    Das Grundprinzip ist, dass sich der Rotor immer so positioniert, dass der magnetische Widerstand des magnetischen Kreises minimiert wird. Der Rotor "strebt" danach, den Weg des geringsten magnetischen Widerstands für das vom Stator erzeugte Feld zu bilden.
+                </p>
+
+            <h3 class="subheading">Geschalteter Reluktanzmotor (SRM)</h3>
+            <div class="diagram-container">
+                <img src="images/SRM.gif" alt="Funktionsweise SRM" class="diagram">
+            </div>
+            <p>
+                Beim SRM werden die Statorwicklungen sequentiell bestromt.  Das erzeugte Magnetfeld zieht die nächstgelegenen Rotorpole an, wodurch sich der Rotor schrittweise dreht.
+            </p>
+
+
+            <h3 class="subheading">Synchroner Reluktanzmotor (SynRM)</h3>
+            <div class="diagram-container">
+                <img src="images/reluktanzmotor-schritte-animiert.webp" alt="Funktionsweise SynRM" class="diagram">
+            </div>
+            <p>
+                Der SynRM nutzt ein rotierendes Magnetfeld im Stator. Der Rotor ist so geformt, dass er eine Vorzugsrichtung für den magnetischen Fluss hat (Anisotropie).  Der Rotor richtet sich nach dem Drehfeld aus und dreht sich synchron mit der Frequenz des Drehfeldes.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🔌</span> Anwendungen</h2>
+            <p>Reluktanzmotoren werden in Elektrofahrzeugen, industriellen Antrieben, Haushaltsgeräten und Windkraftanlagen eingesetzt.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">⚖️</span> Vor- und Nachteile</h2>
+            <div class="pros-cons-container">
+                <div class="pros">
+                    <h3>Vorteile</h3>
+                    <ul>
+                        <li>Einfacher, robuster Aufbau</li>
+                        <li>Geringe Kosten</li>
+                        <li>Hohe Drehzahlen möglich</li>
+                        <li>Hoher Wirkungsgrad</li>
+                         <li>Gute Überlastfähigkeit</li>
+                    </ul>
+                </div>
+                <div class="cons">
+                    <h3>Nachteile</h3>
+                    <ul>
+                        <li>Drehmomentwelligkeit</li>
+                        <li>Geräuschentwicklung und Vibrationen</li>
+                        <li>Komplexe Ansteuerung</li>
+                        <li>Geringere Leistungsdichte als bei Permanentmagnetmotoren</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="navigation">
+            <a href="index.html" class="back-button">Zurück zur Übersicht</a>
+        </div>
+
+    </main>
+
+    <script>
+        // Initialisiere Particles.js (wenn vorhanden)
+        if (document.getElementById('particles-js')) {
+            particlesJS.load('particles-js', 'particles-config.json', function() {
+                console.log('callback - particles.js config loaded');
+            });
+        }
+    </script>
+</body>
+</html>
